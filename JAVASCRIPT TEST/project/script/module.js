@@ -1,7 +1,8 @@
 const getInput = document.querySelector("input");
 const getButton = document.querySelector("button");
 const getList = document.querySelector(".list");
-
+const itemListLen = document.getElementById("itens");
+const list = []
 getButton.addEventListener('click', function(){
     const myItem = getInput.value;
     getInput.value = "";
@@ -10,6 +11,7 @@ getButton.addEventListener('click', function(){
     // const listText = document.createElement('span');
     const delButton = document.createElement("button");
     listItens.innerHTML = myItem;
+    list.push(myItem);
     // listItens.appendChild(listText);
     // listText.textContent = myItem;
     delButton.textContent = "❌";
@@ -18,7 +20,9 @@ getButton.addEventListener('click', function(){
 
     delButton.addEventListener('click', function(){
         getList.removeChild(listItens);
+        list.pop();
+        itemListLen.textContent = list.length;
     })
     getInput.focus();
-
+    itemListLen.textContent = list.length;
 });
